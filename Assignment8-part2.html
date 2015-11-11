@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Assignment 8</title>
+
+<!-- CSS for Part 2
+<style>
+	  html {
+		  background:url('wallpaper.jpeg') no-repeat;
+		  padding:15px 15px 0;
+		  font-family:sans-serif;
+		  font-size:14px;
+	  }
+	  p, h3 { 
+		  margin-bottom:15px;
+	  }
+
+	  div {
+		  padding:10px;
+		  width:600px;
+		  background:#fff;
+		  margin: 0 0;
+	  }
+	  ul {
+		  margin-left: -40px;
+	  }
+	  .tabs li {
+		  list-style:none;
+		  display:inline;
+	  }
+
+	  .tabs a {
+		  padding:10px 10px;
+		  display:inline-block;
+		  background:#666;
+		  color:#fff;
+		  text-decoration:none;
+	  }
+
+	  .tabs a.active {
+		  background:#fff;
+		  color:#000;
+	  }
+</style>
+
+-->
+
+<!-- CSS for Part 3 -->
+<style>
+.accordion, .accordion * {
+    -webkit-box-sizing:border-box; 
+    -moz-box-sizing:border-box; 
+    box-sizing:border-box;
+}
+
+.accordion {
+    overflow:hidden;
+    box-shadow:0px 1px 3px rgba(0,0,0,0.25);
+    border-radius:3px;
+    background:#f7f7f7;
+}
+
+.accordion-section-title {
+    width:100%;
+    padding:15px;
+    display:inline-block;
+    border-bottom:1px solid #1a1a1a;
+    background:#333;
+    transition:all linear 0.15s;
+    font-size:1.2em;
+    text-shadow:0px 1px 0px #1a1a1a;
+    color:#fff;
+}
+
+.accordion-section-title.active, .accordion-section-title:hover {
+    background:#4c4c4c;
+    text-decoration:none;
+}
+
+.accordion-section:last-child .accordion-section-title {
+    border-bottom:none;
+}
+
+.accordion-section-content {
+    padding:15px;
+    display:none;
+}
+</style>
+
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+ $(document).ready(function() {
+	
+	//Part 2 - A jQuery Tabbed Menu Bar
+/*	$('ul.tabs').each(function(){
+		var $active, $content, $links = $(this).find('a');
+		$active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+		$active.addClass('active');
+
+		$content = $($active[0].hash);
+
+		$links.not($active).each(function () {
+			$(this.hash).hide();
+		});
+
+		$(this).on('click', 'a', function(e){
+			$active.removeClass('active');
+			$content.hide();
+			$active = $(this);
+			$content = $(this.hash);		
+			$active.addClass('active');
+			$content.show();
+			e.preventDefault();
+		});
+	});*/
+	
+	//Part 3 - A jQuery Accordion 
+		function close_accordion_section() {
+        $('.accordion .accordion-section-title').removeClass('active');
+        $('.accordion .accordion-section-content').slideUp(300).removeClass('open');
+    }
+
+    $('.accordion-section-title').click(function(e) {
+        // Grab current anchor value
+        var currentAttrValue = $(this).attr('href');
+
+        if($(e.target).is('.active')) {
+            close_accordion_section();
+        }else {
+            close_accordion_section();
+
+            // Add active class to section title
+            $(this).addClass('active');
+            // Open up the hidden content panel
+            $('.accordion ' + currentAttrValue).slideDown(300).addClass('open'); 
+        }
+
+        e.preventDefault();
+    });
+		     			
+});
+
+</script>
+</head>
+
+<body>
+
+<!-- Part 1
+
+
+-->
+
+
+<!-- Part 2
+<ul class='tabs'>
+    <li><a href='#tab1'>GOT Tab 1</a></li>
+    <li><a href='#tab2'>GOT Tab 2</a></li>
+    <li><a href='#tab3'>GOT Tab 3</a></li>
+  </ul>
+  <div id='tab1'>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do we do not sow labore et dolore magna royal. Seven hells ad minim veniam, lord of light a taste of glory poison is a woman's weapon. Mulled wine the last of the dragons honeyed locusts dagger cillum dolore eu fugiat nulla pariatur. Dog moon-flower juice bloody mummers tunic, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+  <div id='tab2'>
+    <p>Curabitur pretium tincidunt lacus. Nulla suckling pig a odio. Nullam varius, warg et commodo greyscale, est eros bibendum murder, he asked too many questions mauris. Integer in we light the way brothel. Ours is the fury risus vulputate vehicula. Arbor gold risus a elit. Etiam court. The seven, ligula eu tempor congue, no song so sweet, honed and ready risus a quam. Pride and purpose mi. Donec fermentum. Feed it to the goats. Crimson your grace, night's watch, the wall, consequat quis, m'lord. Aliquam faucibus, elit manhood dictum aliquet, felis nisl adipiscing sapien, spiced wine diam lacus eget erat. No foe may pass. Nullam arcu. Never resting. You know nothing, honeyed locusts, laoreet et, pretium ac, goblet. Aenean magna nisl, green dreams, molestie eu, godswood in, orci. In hac habitasse platea dictumst.
+</p>
+  </div>
+  <div id='tab3'>
+    <p>Old bear, milk of the poppy, nisl turpis mare's milk, sed placerat ipsum urna sed risus. In convallis tellus fire mauris. Curabitur non elit always pays his debts. Tread lightly here. Donec mattis semper leo. In hac death before disgrace. Vivamus facilisis diam at odio. Mauris dictum, nisi eget consequat nuncle, lacus ligula molestie tower, as high as honor arbor gold. Donec turpis. Full of terrors. Let me soar joust mauris. Righteous in wrath non nightsoil. Proin turpis lacus, scelerisque vitae, elementum at, lobortis ac, gallant. In his cups coopers. Moon and stars platea dictumst. Etiam sit amet diam. Suspendisse odio. Suspendisse nunc. In semper bibendum libero.</p>
+  </div> 
+ 
+-->
+
+
+<!-- Part 3 -->
+
+<div class="accordion">
+    <div class="accordion-section">
+        <a class="accordion-section-title" href="#accordion-1">GOT Section #1</a>
+        
+        <div id="accordion-1" class="accordion-section-content">
+            <p>Brother pride and purpose amet, cold ward others, sed always pays his debts ut labore et dolore sun dwarf. M'lady king the seven veniam, quis nostrud let me soar drink, your king commands it arbor gold. Cell ser old bear poison is a woman's weapon bannerman he asked too many questions usurper. As high as honor green dreams, let it be written smallfolk deserunt mollit take the black weirwood.</p>
+<p>Curabitur pretium bloody mummers. Tunic spiced wine a odio. Night's watch, seven hells sandsilk dagger, trueborn none so wise, arakh luctus magna felis sollicitudin gown. The wall tread lightly here ever vigilant. Full of terrors et honed and ready. Donec lobortis risus a elit. Mare's milk. Ut ullamcorper, ligula eu tempor congue, lord of light turpis, no foe may pass never resting. Maecenas fermentum consequat mi. Your grace. A taste of glory raiders. Beast sapien sem, aliquet nec, mulled wine, green dreams, wildling. Aliquam faucibus, elit ut dictum aliquet, we do not sow, your grace baseborn lacus eget erat. Ours is the fury. Nullam arcu. Weirwood squire. None so fierce, suckling pig, maidenhead tower, pretium ac, nisi. Work her will, the seven, old bear, feugiat in, craven. Pavilion milk of the poppy.       </p> </div>
+    </div>
+
+        <a class="accordion-section-title" href="#accordion-2">GOT Section #2</a>
+        
+        <div id="accordion-2" class="accordion-section-content">
+           <p>Bloody mummers, you know nothing treachery, spiced wine joust mauris, sed placerat ipsum urna sed slave. Mare's milk in his cups. Curabitur non elit ut libero tristique sodales. Pride and purpose. Donec mattis semper trueborn. In hac arbor gold princess. No song so sweet dragons. Moon-flower juice, nisi eget consequat elementum, lacus ligula molestie metus, feast feugiat our sun shines bright. Your grace. Let me soar. Death before disgrace moleskin ser. Winter is coming non garron. Never resting merchant, scelerisque wench, elementum at, the wall, sandsilk. Honeyed locusts arbor gold. In hac full of terrors. Mulled wine old bear. Suspendisse odio. Spiced wine. In semper bibendum libero.</p>
+Ever vigilant, seven hells bloody mummers, milk of the poppy, your grace always pays his debts manhood. Nullam ornare. Praesent odio ligula, squire fire, fool treachery, neeps steel, stag. Honed and ready. Throne none so dutiful. Green dreams none so fierce. Milk of the poppy. Donec non whore. Tunic trencher lacus sit amet nulla. Cras dignissim smallfolk et augue. None so wise. Pellentesque habitant morbi moon-flower juice dwarf mare's milk the last of the dragons. In hac gallant arbor gold. Mulled wine. Feed it to the goats. Nunc sed lacus at augue bibendum nightsoil.</p>
+
+        </div>
+    </div>
+
+	<div class="accordion-section">
+        <a class="accordion-section-title" href="#accordion-3">GOT Section #3</a>
+        
+        <div id="accordion-3" class="accordion-section-content">
+            <p>Aliquam the seven spiced wine. Cras purus lectus, the wall, suckling pig, night's watch, holdfast. Morbi magister old bear. Moon and stars. Lord of light ward. We light the way baseborn ullamcorper feugiat. Praesent stag, spider sed green dreams, ever vigilant tunic magna, as high as honor cold sun. A taste of glory metus. Rouse me not. Proin justo. Gallant fire dirk. Bloody mummers. Praesent ut quam.</p>
+			<p>Never resting, mare's milk seven hells, we do not sow, honeyed locusts garron ligula quis ironborn. Donec vestibulum tortor ac bannerman. No foe may pass. Let me soar holdfast. Nullam imperdiet. Integer sit amet mauris imperdiet risus sollicitudin rutrum. Warrior the wall. Suckling pig. Quisque tortor velit, arbor gold, princess vel, night's watch, urna. Vivamus nulla elit, old bear, destrier et, scelerisque eget, warg. Pellentesque viverra purus. Quisque elit. You know nothing.</p>
+
+        </div>
+    </div>
+
+
+</div>
+ 
+ 
+</body>
+</html>
